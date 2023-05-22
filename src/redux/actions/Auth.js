@@ -1,6 +1,9 @@
 import {
+  ONCONNECT,
   SIGNIN,
+  SIGNIN_WALLET,
   AUTHENTICATED,
+	UPDATE_USER_INFO,
   SIGNOUT,
   SIGNOUT_SUCCESS,
   SHOW_AUTH_MESSAGE,
@@ -14,12 +17,27 @@ import {
   SIGNIN_WITH_FACEBOOK_AUTHENTICATED
 } from '../constants/Auth';
 
+
+export const onConnect = () => {
+  return {
+    type: ONCONNECT,
+  }
+};
+
 export const signIn = (user) => {
   return {
     type: SIGNIN,
     payload: user
   }
 };
+
+export const signInwithWallet = (payload) => {
+	return{
+		type: SIGNIN_WALLET,
+		payload
+	}
+}
+
 
 export const authenticated = (token) => {
   return {
@@ -52,6 +70,13 @@ export const signUpSuccess = (token) => {
     type: SIGNUP_SUCCESS,
     token
   };
+};
+
+export const updateUserInfo = (payload) => {
+  return {
+    type: UPDATE_USER_INFO,
+    payload
+  }
 };
 
 export const signInWithGoogle = () => {

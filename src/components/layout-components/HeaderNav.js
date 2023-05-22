@@ -4,9 +4,11 @@ import { Layout } from "antd";
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
 import Logo from './Logo';
 import NavPanel from './NavPanel';
+import NavProfile from './NavProfile';
 import NavSearch  from './NavSearch';
 import { toggleCollapsedNav, onMobileNavToggle } from 'redux/actions/Theme';
 import { NAV_TYPE_TOP, SIDE_NAV_COLLAPSED_WIDTH, SIDE_NAV_WIDTH } from 'constants/ThemeConstant';
+import { Button } from 'antd';
 import utils from 'utils'
 
 const { Header } = Layout;
@@ -70,6 +72,12 @@ export const HeaderNav = props => {
               </ul>
           </div>
           <div className="nav-right">
+			<NavProfile />
+			  <div>
+				<Button type='text'>
+					 <a href={`https://tkd-coop.notion.site/TAC-eebcbb679c5749fda84c1dbf158ea967`} target="_blank">FAQ</a>
+				 </Button>
+				</div>
             <NavPanel />
           </div>
           <NavSearch active={searchActive} close={onSearchClose}/>

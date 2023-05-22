@@ -12,8 +12,11 @@ import { onMobileNavToggle } from "redux/actions/Theme";
 const { SubMenu } = Menu;
 const { useBreakpoint } = Grid;
 
-const setLocale = (isLocaleOn, localeKey) =>
-  isLocaleOn ? <IntlMessage id={localeKey} /> : localeKey.toString();
+const setLocale = (isLocaleOn, localeKey) => {
+	  const result = isLocaleOn ? <IntlMessage id={localeKey} /> : localeKey.toString();
+	
+	  return result
+}
 
 const setDefaultOpen = (key) => {
   let keyList = [];
@@ -99,6 +102,7 @@ const SideNavContent = (props) => {
 const TopNavContent = (props) => {
   const { topNavColor, localization } = props;
   return (
+	  <>
     <Menu mode="horizontal" style={{ backgroundColor: topNavColor }}>
       {navigationConfig.map((menu) =>
         menu.submenu.length > 0 ? (
@@ -152,6 +156,7 @@ const TopNavContent = (props) => {
         )
       )}
     </Menu>
+	  </>
   );
 };
 

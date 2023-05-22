@@ -1,26 +1,15 @@
 [
 	{
+	    "langName": "Korean",
+        "langId": "ko",
+        "icon": "kr",
+        "lang": "Kr"
+	},
+	{
         "langName": "English",
         "langId": "en",
         "icon": "us",
         "lang": "En"
-    },
-    {
-        "langName": "Chinese",
-        "langId": "zh",
-        "icon": "cn",
-        "lang": "Ch"
-    },
-    {
-        "langName": "French",
-        "langId": "fr",
-        "icon": "fr",
-        "lang": "Fr"
-    },
-    {
-        "langName": "Janpanese",
-        "langId": "ja",
-        "icon": "jp",
-        "lang": "Jp"
     }
+
 ]

@@ -8,7 +8,12 @@ export const AppViews = () => {
     <Suspense fallback={<Loading cover="content"/>}>
       <Switch>
         <Route path={`${APP_PREFIX_PATH}/home`} component={lazy(() => import(`./home`))} />
-        <Redirect from={`${APP_PREFIX_PATH}`} to={`${APP_PREFIX_PATH}/home`} />
+		<Route path={`${APP_PREFIX_PATH}/match`} component={lazy(() => import(`./match`))} />	
+		<Route path={`${APP_PREFIX_PATH}/dashboard`} component={lazy(() => import(`./dashboard`))} />	
+		<Route path={`${APP_PREFIX_PATH}/training`} component={lazy(() => import(`./training`))} />	
+		 <Route path={`${APP_PREFIX_PATH}/event`} component={lazy(() => import(`./event`))} />	
+		  <Route path={`${APP_PREFIX_PATH}/editProfile`} component={lazy(() => import(`./editProfile`))} />	
+        <Redirect from={`${APP_PREFIX_PATH}`} to={`${APP_PREFIX_PATH}/dashboard`} />
       </Switch>
     </Suspense>
   )

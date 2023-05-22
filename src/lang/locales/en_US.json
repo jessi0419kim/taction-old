@@ -1,10 +1,79 @@
 {
-	"home": "Home",
+	
+	"Arbitrum" : "Arbitrum",
+	"Mainnet" : "Mainnet",
+		"FAQ": "User Manual",
+
+	"wallet.myAssets" : "My Assets",
+	"wallet.ofWallet" : "My Wallet",
+	"wallet.bridge": "Bridge",
+	"wallet.exchange": "Exchange",
+	"wallet.transfer": "Transfer",
+	
+	"users.name" : "Name",
+	"users.address" : "Address",
+	"users.allowedMatches" : "# of Matches",
+	"users.country" : "Country",
+	"users.division" : "Division",
+	"users.team" : "Team",
+	"users.confirm" : "Confirm",
+	"users.confirm.button" : "Confirm",
+		"users.confirmed.button" : "Confirmed",
+	"users.status" : "Status",
+	
+	"users.matchID" : "Match ID",
+	"users.time" : "Time",
+	"users.score" : "Score",
+	"users.winner" : "Win",
+	"users.loser" : "Lose",
+	"users.referee" : "Referee",
+	
+	
+	"isUserRegistered.Confirmed": "Confirmed",
+	"isUserRegistered.Loading": "Loading",
+	
+	"isTacApproved.Confirmed": "Confirmed",
+	"isTacApproved.Loading": "Loading",	
 	
 	"sidenav.dashboard": "Dashboard",
-	"sidenav.dashboard.default": "Default",
-	"sidenav.dashboard.analytic": "Analytic",
-	"sidenav.dashboard.sales": "Sales",
+    "sidenav.dashboard.Transfer": "Send",	
+	"sidenav.dashboard.wallet" : "Wallet",
+	"sidenav.dashboard.userlist" : "Users",
+	"sidenav.dashboard.refereelist" : "Referees",
+	"sidenav.dashboard.bridge": "Bridge",
+	
+	"sidenav.match" : "Match",
+	"sidenav.match.result" : "Result",
+	"sidenav.match.report" : "Report",
+	"sidenav.match.confirm" : "Confirm",
+	"match.history" : "Match History",
+ 	"match.allMatches" : "All Matches",
+	"match.myMatches" : "My Matches",
+	
+	"sidenav.training" : "Training",
+	"sidenav.training.result" : "Result",
+	"sidenav.training.report" : "Report",
+	"sidenav.training.confirm" : "Confirm",
+	
+	"sidenav.event" : "Event",
+	
+	"countdown.days" : "DAYS",
+	"countdown.hours" : "HOURS",
+	"countdown.minutes" : "MINUTES",
+	"countdown.seconds" : "SECONDS",
+	
+	"countdown.unlock" : "UNLOCK",
+	
+	
+	"coin.eth-arbitrum" : "Ethereum-Arbitrum",
+    "coin.tac-arbitrum.free" : "TAC-Arbitrum",
+	"coin.tac-arbitrum.locked" : "TAC-Arbitrum(locked)",
+	
+	"coin.eth-mainnet" : "Ethereum-Mainnet",
+    "coin.tac-mainnet.free" : "TAC-Mainnet",
+	"coin.tac-mainnet.locked" : "TAC-Mainnet(locked)",
+	
+	"contract.address" : "Contract Address",
 
 	"sidenav.apps": "Apps",
 	"sidenav.apps.mail": "Mail",

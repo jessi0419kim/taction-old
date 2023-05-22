@@ -29,7 +29,8 @@ function RouteInterceptor({ children, isAuthenticated, ...rest }) {
 }
 
 export const Views = (props) => {
-  const { locale, token, location } = props;
+     const { locale, token, location } = props;
+
   const currentAppLocale = AppLocale[locale];
   return (
     <IntlProvider

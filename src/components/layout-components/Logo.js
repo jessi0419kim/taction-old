@@ -29,13 +29,14 @@ const getLogo = (props) => {
     if(navCollapsed) {
       return '/img/logo-sm-white.png'
     }
-    return '/img/logo-white.png'
+    //return '/img/logo-white.png'
+	  return '/img/taction_op_testnet.png'
   }
 
   if (navCollapsed) {
-    return '/img/logo-sm.png'
+    return '/img/taction_arbitrum_sm.png'
   }
-  return '/img/logo.png'
+	return '/img/taction_arbitrum.png'
 }
 
 const getLogoDisplay = (isMobile, mobileLogo) => {

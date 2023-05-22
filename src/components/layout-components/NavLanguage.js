@@ -29,7 +29,11 @@ export const NavLanguage = ({ locale, configDisplay, onLocaleChange }) => {
 					<Menu.Item 
 						key={i} 
 						className={locale === elm.langId? 'ant-dropdown-menu-item-active': ''} 
-						onClick={() => onLocaleChange(elm.langId)}
+						onClick={() => {
+						 localStorage.setItem('nation', elm.langId)
+						 onLocaleChange(elm.langId)
+		      			}
+	     			   }
 					>
 						<span className="d-flex justify-content-between align-items-center">
 							<div>

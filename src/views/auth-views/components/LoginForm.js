@@ -1,32 +1,33 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
-import { Button, Form, Input, Divider, Alert } from "antd";
-import { MailOutlined, LockOutlined } from '@ant-design/icons';
+import { Button} from "antd";
 import PropTypes from 'prop-types';
-import { GoogleSVG, FacebookSVG } from 'assets/svg/icon';
-import CustomIcon from 'components/util-components/CustomIcon'
 import { 
 	signIn, 
 	showLoading, 
 	showAuthMessage, 
 	hideAuthMessage, 
-	signInWithGoogle, 
-	signInWithFacebook 
+	signInwithWallet
 } from 'redux/actions/Auth';
+import { useDispatch } from 'react-redux'
 import { useHistory } from "react-router-dom";
-import { motion } from "framer-motion"
+import {portis} from 'services/walletServices/PortisService'
+//import {errorNotification, txHashNotification} from 'components/shared-components/Notifications'
+import {onConnectByMetamask, onSignInByMetamask, onSignInByMetamask1} from 'services/walletServices/MetamaskService'
 
-export const LoginForm = props => {
+
+
+export const LoginForm = (props, provider, web3, ) => {
+
+    const dispatch = useDispatch()
 	let history = useHistory();
 
 	const { 
 		otherSignIn, 
-		showForgetPassword, 
+		//showForgetPassword, 
 		hideAuthMessage,
-		onForgetPasswordClick,
+		//onForgetPasswordClick,
 		showLoading,
-		signInWithGoogle,
-		signInWithFacebook,
 		extra, 
 		signIn, 
 		token, 
@@ -37,25 +38,13 @@ export const LoginForm = props => {
 		allowRedirect
 	} = props
 
-	const initialCredential = {
-		email: 'user1@themenate.net',
-		password: '2005ipo'
-	}
 
 	const onLogin = values => {
 		showLoading()
 		signIn(values);
 	};
 
-	const onGoogleLogin = () => {
-		showLoading()
-		signInWithGoogle()
-	}
 
-	const onFacebookLogin = () => {
-		showLoading()
-		signInWithFacebook()
-	}
 
 	useEffect(() => {
 		if (token !== null && allowRedirect) {
@@ -68,97 +57,47 @@ export const LoginForm = props => {
 		}
 	});
 	
-	const renderOtherSignIn = (
-		<div>
-			<Divider>
-				<span className="text-muted font-size-base font-weight-normal">or connect with</span>
-			</Divider>
-			<div className="d-flex justify-content-center">
-				<Button 
-					onClick={() => onGoogleLogin()} 
-					className="mr-2" 
-					disabled={loading} 
-					icon={<CustomIcon svg={GoogleSVG}/>}
-				>
-					Google
-				</Button>
-				<Button 
-					onClick={() => onFacebookLogin()} 
-					icon={<CustomIcon svg={FacebookSVG}/>}
-					disabled={loading} 
-				>
-					Facebook
-				</Button>
-			</div>
-		</div>
-	)
 
-	return (
+	
+
+	
+	const onConnectPortis = async() => {
+		portis.onLogin((walletAddress) => {
+		 console.log(walletAddress)
+		  dispatch(signInwithWallet({walletAddress, walletType: 'portis'}))   
+		})
+	    portis.showPortis()
+
+	}
+	
+	const onConnectMetamask = async() => {
+	
+		const walletAddress = await onSignInByMetamask1()
+		if(walletAddress){
+			dispatch(signInwithWallet({walletAddress, walletType: 'metamask'}))   
+		}else{
+			console.log('로그인 실패')
+	
+		}
+		
+	}
+	
+	
+	return(
 		<>
-			<motion.div 
-				initial={{ opacity: 0, marginBottom: 0 }} 
-				animate={{ 
-					opacity: showMessage ? 1 : 0,
-					marginBottom: showMessage ? 20 : 0 
-				}}> 
-				<Alert type="error" showIcon message={message}></Alert>
-			</motion.div>
-			<Form 
-				layout="vertical" 
-				name="login-form" 
-				initialValues={initialCredential}
-				onFinish={onLogin}
-			>
-				<Form.Item 
-					name="email" 
-					label="Email" 
-					rules={[
-						{ 
-							required: true,
-							message: 'Please input your email',
-						},
-						{ 
-							type: 'email',
-							message: 'Please enter a validate email!'
-						}
-					]}>
-					<Input prefix={<MailOutlined className="text-primary" />}/>
-				</Form.Item>
-				<Form.Item 
-					name="password" 
-					label={
-						<div className={`${showForgetPassword? 'd-flex justify-content-between w-100 align-items-center' : ''}`}>
-							<span>Password</span>
-							{
-								showForgetPassword && 
-								<span 
-									onClick={() => onForgetPasswordClick} 
-									className="cursor-pointer font-size-sm font-weight-normal text-muted"
-								>
-									Forget Password?
-								</span>
-							} 
-						</div>
-					} 
-					rules={[
-						{ 
-							required: true,
-							message: 'Please input your password',
-						}
-					]}
-				>
-					<Input.Password prefix={<LockOutlined className="text-primary" />}/>
-				</Form.Item>
-				<Form.Item>
-					<Button type="primary" htmlType="submit" block loading={loading}>
-						Sign In
-					</Button>
-				</Form.Item>
-				{
-					otherSignIn ? renderOtherSignIn : null
-				}
-				{ extra }
-			</Form>
+			<Button className="mt-3" type="primary" block onClick={() => onConnectPortis()}>
+			   Portis
+			</Button>
+			<Button className="mt-3" type="primary" block onClick={() => onConnectMetamask()}>
+			   Metamask
+			</Button>	
+		    	<div className="my-4">
+					<div className="text-center">
+					 <Button type='text'>
+					   <a className="text-muted" href={`https://tkd-coop.notion.site/TAC-eebcbb679c5749fda84c1dbf158ea967`} target="_blank">자주하는 질문(FAQ)</a>
+				     </Button>
+					</div>
+				</div>
 		</>
 	)
 }
@@ -187,8 +126,6 @@ const mapDispatchToProps = {
 	showAuthMessage,
 	showLoading,
 	hideAuthMessage,
-	signInWithGoogle,
-	signInWithFacebook
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)
